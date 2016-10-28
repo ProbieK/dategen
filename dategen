@@ -1,0 +1,8 @@
+#!/bin/bash
+#Written with help from Bohdan
+#http://stackoverflow.com/questions/4351282/how-to-generate-a-sequence-of-dates-given-starting-and-ending-dates-using-awk-of
+read -p "Enter text to prepend: " msg
+read -p "Enter the Starting Date: " usrdate
+read -p "Enter number of days to generate: " numdays
+answer=$(seq 0 $numdays | xargs -I {} date -d "$usrdate {} days" +%m/%d/%y | sed -e "s/^/$msg\ /;s/^[ \t]*//")
+echo "$answer"
